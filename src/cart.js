@@ -22,8 +22,8 @@ function changeQuantity(cart, id, quantity) {
     throw new RangeError();
   return cart.map((p) => (p.id === id ? { ...p, quantity } : p));
 }
-function removeFromCart() {
-  return notImplemented();
+function removeFromCart(cart, id) {
+  return cart.filter((p) => p.id !== id);
 }
 function calculateCartSubtotal() {
   return notImplemented();
