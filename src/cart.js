@@ -17,8 +17,10 @@ function addToCart(cart, product, quantity) {
     return [...cart, { ...product, quantity: quantity }];
   }
 }
-function changeQuantity() {
-  return notImplemented();
+function changeQuantity(cart, id, quantity) {
+  if (quantity <= 0 || quantity > cart.find((p) => p.id === id)?.stock)
+    throw new RangeError();
+  return cart.map((p) => (p.id === id ? { ...p, quantity } : p));
 }
 function removeFromCart() {
   return notImplemented();
